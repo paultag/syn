@@ -1,4 +1,5 @@
-# Syn versioning tests. This is now the hardest part.
+# Copyright (c) Syn AUTHORS, 2012, under the terms and conditions of the
+# AUTHORS file.
 
 from syn.versions import Version
 

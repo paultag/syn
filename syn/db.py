@@ -1,4 +1,5 @@
-# Copyright (c) Syn AUTHORS under the terms & conditions of the LICENSE file.
+# Copyright (c) Syn AUTHORS, 2012, under the terms and conditions of the
+# AUTHORS file.
 
 import json
 

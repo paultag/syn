@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+
+import syn.versions
+
+print syn.versions._do_compare("1.0", "1~1")
+print syn.versions._do_compare("1.0.0", "1~1")
+print syn.versions._do_compare("1+1", "1~1")
