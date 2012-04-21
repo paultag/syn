@@ -3,6 +3,7 @@
 
 import json
 
+
 class Database(dict):
     def __init__(self, fil):
         self._file = fil

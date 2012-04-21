@@ -1,13 +1,15 @@
 # Copyright (c) Syn AUTHORS, 2012, under the terms and conditions of the
 # AUTHORS file.
 
+
 class Comparatron:
     _weights = {
-        "~" : -2,
+        "~": -2,
         None: -1,
-        "+" : 1,
-        "." : 2,
+        "+": 1,
+        ".": 2,
     }
+
     def __init__(self, string):
         self.string = string
 
@@ -49,7 +51,7 @@ def _magic_strip(string, tokens):
 
 def _do_compare(vid1, vid2, test):
     """Is none true or false?"""
-    delims = [ "+", ".", "~" ]
+    delims = ["+", ".", "~"]
     v1s = _magic_strip(vid1, delims)
     v2s = _magic_strip(vid2, delims)
 
