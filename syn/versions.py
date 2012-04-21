@@ -3,7 +3,8 @@
 
 class Comparatron:
     _weights = {
-        "~" : 0,
+        "~" : -2,
+        None: -1,
         "+" : 1,
         "." : 2,
     }
@@ -14,33 +15,21 @@ class Comparatron:
         return self._weights[self.string]
 
     def __lt__(self, other):
-        if other is None:
-            return False
         return self._get_weight() < other._get_weight()
 
     def __gt__(self, other):
-        if other is None:
-            return True
         return self._get_weight() > other._get_weight()
 
     def __ne__(self, other):
-        if other is None:
-            return True
         return self._get_weight() != other._get_weight()
 
     def __eq__(self, other):
-        if other is None:
-            return False
         return self._get_weight() == other._get_weight()
 
     def __ge__(self, other):
-        if other is None:
-            return True
         return self._get_weight() >= other._get_weight()
 
     def __le__(self, other):
-        if other is None:
-            return False
         return self._get_weight() <= other._get_weight()
 
 
@@ -65,7 +54,7 @@ def _do_compare(vid1, vid2, test):
     v2s = _magic_strip(vid2, delims)
 
     def _normalize(a, b):
-        fill = None
+        fill = Comparatron(None)
         al = len(a)
         bl = len(b)
         delt = al - bl
@@ -89,16 +78,16 @@ def _do_compare(vid1, vid2, test):
     return None
 
 
-def cmp_lt(vid1, vid2):
-    def _lt(obj1, obj2):
-        return obj1 < obj2
-    return _do_compare(vid1, vid2, _lt)
-
-
 def cmp_gt(vid1, vid2):
     def _gt(obj1, obj2):
         return obj1 > obj2
     return _do_compare(vid1, vid2, _gt)
+
+
+def cmp_lt(vid1, vid2):
+    def _lt(obj1, obj2):
+        return obj1 < obj2
+    return _do_compare(vid1, vid2, _lt)
 
 
 def cmp_eq(vid1, vid2):

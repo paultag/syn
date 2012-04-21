@@ -41,7 +41,10 @@ def test_patch():
 
 
 def test_plusthing():
-    # test mismatched
+    v1 = "1.0.0~1"
+    v2 = "1.0.0"
+    assert cmp_lt(v1, v2)
+    assert cmp_gt(v2, v1)
     v1 = "1.0.0+1"
     v2 = "1.0.0.0"
     assert cmp_lt(v1, v2)
