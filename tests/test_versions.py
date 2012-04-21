@@ -9,6 +9,11 @@ def test_simple():
     assert cmp_gt(v2, v1)
 
 
+def test_janked():
+    v1 = "1.0.1"
+    v2 = "1.0"
+    assert cmp_gt(v1, v2)
+
 def test_minor():
     v1 = "1.0"
     v2 = "1.1"

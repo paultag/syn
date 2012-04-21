@@ -3,7 +3,7 @@
 
 class Comparatron:
     _weights = {
-        "~" : -1,
+        "~" : 0,
         "+" : 1,
         "." : 2,
     }
@@ -14,21 +14,33 @@ class Comparatron:
         return self._weights[self.string]
 
     def __lt__(self, other):
+        if other is None:
+            return False
         return self._get_weight() < other._get_weight()
 
     def __gt__(self, other):
+        if other is None:
+            return True
         return self._get_weight() > other._get_weight()
 
     def __ne__(self, other):
+        if other is None:
+            return True
         return self._get_weight() != other._get_weight()
 
     def __eq__(self, other):
+        if other is None:
+            return False
         return self._get_weight() == other._get_weight()
 
     def __ge__(self, other):
+        if other is None:
+            return True
         return self._get_weight() >= other._get_weight()
 
     def __le__(self, other):
+        if other is None:
+            return False
         return self._get_weight() <= other._get_weight()
 
 
@@ -51,6 +63,23 @@ def _do_compare(vid1, vid2, test):
     delims = [ "+", ".", "~" ]
     v1s = _magic_strip(vid1, delims)
     v2s = _magic_strip(vid2, delims)
+
+    def _normalize(a, b):
+        fill = None
+        al = len(a)
+        bl = len(b)
+        delt = al - bl
+        minval = al if al < bl else bl
+        maxval = al if al > bl else bl
+        if delt > 0:
+            oper = b
+        else:
+            oper = a
+        for i in range(minval, maxval):
+            oper.append(fill)
+        return a, b
+
+    v1s, v2s = _normalize(v1s, v2s)
 
     for i in range(0, len(v1s)):
         v1 = v1s[i]
