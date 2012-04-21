@@ -4,8 +4,8 @@
 class Comparatron:
     _weights = {
         "~" : -1,
-        "." : 0,
-        "+" : 1
+        "+" : 1,
+        "." : 2,
     }
     def __init__(self, string):
         self.string = string
@@ -46,7 +46,7 @@ def _magic_strip(string, tokens):
     return ret
 
 
-def _do_compare(vid1, vid2, test, noneDefault):
+def _do_compare(vid1, vid2, test):
     """Is none true or false?"""
     delims = [ "+", ".", "~" ]
     v1s = _magic_strip(vid1, delims)
@@ -70,3 +70,9 @@ def cmp_gt(vid1, vid2):
     def _gt(obj1, obj2):
         return obj1 > obj2
     return _do_compare(vid1, vid2, _gt)
+
+
+def cmp_eq(vid1, vid2):
+    def _shim(obj1, obj2):
+        return False
+    return _do_compare(vid1, vid2, _shim) == None
