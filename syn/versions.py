@@ -50,7 +50,6 @@ def _magic_strip(string, tokens):
 
 
 def _do_compare(vid1, vid2, test):
-    """Is none true or false?"""
     delims = ["+", ".", "~"]
     v1s = _magic_strip(vid1, delims)
     v2s = _magic_strip(vid2, delims)
