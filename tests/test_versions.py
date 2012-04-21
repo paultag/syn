@@ -56,6 +56,7 @@ def test_greater_then():
     v2 = "1+2"
     assert cmp_gt(v2, v1)
 
+
 def test_eq():
     v1 = "1.0"
     v2 = "1.0"
