@@ -81,13 +81,13 @@ def _do_compare(vid1, vid2, test):
 def cmp_gt(vid1, vid2):
     def _gt(obj1, obj2):
         return obj1 > obj2
-    return _do_compare(vid1, vid2, _gt)
+    return _do_compare(vid1, vid2, _gt) or False
 
 
 def cmp_lt(vid1, vid2):
     def _lt(obj1, obj2):
         return obj1 < obj2
-    return _do_compare(vid1, vid2, _lt)
+    return _do_compare(vid1, vid2, _lt) or False
 
 
 def cmp_eq(vid1, vid2):
