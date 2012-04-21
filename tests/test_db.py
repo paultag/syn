@@ -3,7 +3,7 @@
 from syn.db import Database
 from nose.tools import with_setup
 
-db_name = "testthing.db"
+db_name = "_removeme.db"
 
 def test_basic_rw():
     db = Database(db_name)
