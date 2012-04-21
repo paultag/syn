@@ -46,18 +46,27 @@ def _magic_strip(string, tokens):
     return ret
 
 
-def _do_compare(vid1, vid2, test):
+def _do_compare(vid1, vid2, test, noneDefault):
+    """Is none true or false?"""
     delims = [ "+", ".", "~" ]
     v1s = _magic_strip(vid1, delims)
     v2s = _magic_strip(vid2, delims)
 
     for i in range(0, len(v1s)):
-        if v1s[i] != v2s[i]:
-            return test(v1s[i], v2s[i])
+        v1 = v1s[i]
+        v2 = v2s[i]
+        if v1 != v2:
+            return test(v1, v2)
     return None
 
 
-def _cmp_lt(vid1, vid2):
+def cmp_lt(vid1, vid2):
     def _lt(obj1, obj2):
         return obj1 < obj2
     return _do_compare(vid1, vid2, _lt)
+
+
+def cmp_gt(vid1, vid2):
+    def _gt(obj1, obj2):
+        return obj1 > obj2
+    return _do_compare(vid1, vid2, _gt)

@@ -3,5 +3,5 @@
 import syn.versions
 import sys
 
-print syn.versions._cmp_lt(sys.argv[1], sys.argv[2])
+print syn.versions.cmp_lt(sys.argv[1], sys.argv[2])
 #                           ^^^  < ^^^
