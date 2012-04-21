@@ -7,6 +7,10 @@ import json
 class Database(dict):
     def __init__(self, fil):
         self._file = fil
+        try:
+            self.load()
+        except IOError:
+            self.sync()
 
     def load(self):
         db = json.load(open(self._file, 'r'))
