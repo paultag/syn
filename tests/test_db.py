@@ -7,7 +7,6 @@ db_name = "testting.db"
 
 def test_basic_rw():
     db = Database(db_name)
-    db.load()
     db.clear()
     db.sync()
     db['foo'] = "bar"
@@ -15,5 +14,4 @@ def test_basic_rw():
     db.sync()
     db = None
     db = Database(db_name)
-    db.load()
     assert db['foo'] == "bar"
