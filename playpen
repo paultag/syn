@@ -1,7 +1,0 @@
-#!/usr/bin/env python
-
-import syn.versions
-import sys
-
-print syn.versions.cmp_lt(sys.argv[1], sys.argv[2])
-#                           ^^^  < ^^^
