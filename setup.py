@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-# License
+# Copyright (c) Syn AUTHORS, 2012, under the terms and conditions of the
+# AUTHORS file.
 
 from syn import __appname__, __version__
 from setuptools import setup

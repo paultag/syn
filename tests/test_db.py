@@ -1,4 +1,5 @@
-# $COPYRIGHT
+# Copyright (c) Syn AUTHORS, 2012, under the terms and conditions of the
+# AUTHORS file.
 
 from syn.db import Database
 from nose.tools import with_setup
