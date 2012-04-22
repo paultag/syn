@@ -3,7 +3,7 @@
 
 from syn.system import cd, run, mkdir, putenv, abspath
 from syn.db import Database
-import os
+
 
 def preform_step(step_name):
     return run(["synd/build", step_name])

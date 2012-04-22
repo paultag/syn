@@ -6,6 +6,7 @@ import os.path
 
 from syn.errors import NotImplementedException
 
+
 class Tarball:
     def __init__(self, file_path):
         self._process_filename(file_path)
