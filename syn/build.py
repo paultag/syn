@@ -8,6 +8,10 @@ def preform_step(step_name):
     return run(["synd/build", step_name])
 
 
+def compose_source_archive(unpacked_root, upstream_tarball):
+    pass
+
+
 def build_source_package(root, steps):
     with cd(root):
         metainf = Database("synd/metainf")

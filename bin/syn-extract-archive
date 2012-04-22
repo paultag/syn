@@ -4,5 +4,4 @@ from syn.archive import Tarball
 import sys
 
 tb = Tarball(sys.argv[1])
-# tb.extract_to(sys.argv[2])
-print tb._root_folder()
+tb.extract_to(sys.argv[2])
