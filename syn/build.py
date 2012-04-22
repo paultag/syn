@@ -18,6 +18,7 @@ def compose_source_archive(unpacked_root, upstream_tarball):
      - Create new archive with the synd/
      - Rename upstream tarball correctly
      - Create new DB, hash tarballs
+     - Move back to where we want
     """
     pass
 
@@ -31,6 +32,7 @@ def extract_source_archive(signed_database, root):
      - Extract to /tmp/<something>/
      - Move root directory/* to new root
      - Extract synd on top of new root
+     - Move back to where we want
     """
     pass
 
