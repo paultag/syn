@@ -12,6 +12,11 @@ def compose_source_archive(unpacked_root, upstream_tarball):
     """
     Generate a signing Database, correctly named tarball and
     a syn local tarball.
+
+     - Head over to tmp/<something/
+     - Create new archive with the synd/
+     - Rename upstream tarball correctly
+     - Create new DB, hash tarballs
     """
     pass
 
@@ -20,7 +25,11 @@ def extract_source_archive(signed_database, root):
     """
     Verify the SHA sums, and compose a correctly formed
     unpacked syn source directory using the archives noted
-    in the signed db
+    in the signed db.
+
+     - Extract to /tmp/<something>/
+     - Move root directory/* to new root
+     - Extract synd on top of new root
     """
     pass
 
