@@ -32,6 +32,7 @@ def mkdir(folder, destroy_old=False):
 def rmdir(path):
     shutil.rmtree(path)
 
+
 def abspath(folder):
     return os.path.abspath(folder)
 
