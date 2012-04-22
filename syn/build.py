@@ -1,4 +1,5 @@
-# Copyright header
+# Copyright (c) Syn AUTHORS, 2012, under the terms and conditions of the
+# AUTHORS file.
 
 from syn.system import cd, run, mkdir, putenv, abspath
 from syn.db import Database
