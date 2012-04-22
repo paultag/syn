@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+from syn.build import build_source_package
+import sys
+
+build_source_package(sys.argv[1])

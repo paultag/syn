@@ -1,4 +1,8 @@
 # Copyright header
 
-def build_source_package():
-    pass
+from syn.system import cd
+import os
+
+def build_source_package(root):
+    with cd(root):
+        print os.getcwd()
