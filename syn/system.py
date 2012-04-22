@@ -29,6 +29,18 @@ def mkdir(folder, destroy_old=False):
             return mkdir(folder, destroy_old=False)
 
 
+def link(source, dest):
+    os.symlink(source, dest)
+
+
+def rm(file_name):
+    os.remove(file_name)
+
+
+def mv(source, dest):
+    os.rename(source, dest)
+
+
 def rmdir(path):
     shutil.rmtree(path)
 
@@ -39,3 +51,7 @@ def abspath(folder):
 
 def putenv(key, value):
     os.environ[key] = value
+
+
+def getenv(key):
+    return os.environ[key]
