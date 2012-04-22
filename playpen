@@ -3,4 +3,4 @@
 from syn.build import build_source_package
 import sys
 
-build_source_package(sys.argv[1])
+build_source_package(sys.argv[1], ["configure", "build", "install"])
