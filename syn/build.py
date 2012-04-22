@@ -36,6 +36,7 @@ def extract_source_archive(signed_database, root):
 
 
 def build_source_package(root, steps):
+    """Run the build targets, and create a binary package."""
     with cd(root):
         metainf = Database("synd/metainf")
         mkdir("synd/tmp", destroy_old=True)
