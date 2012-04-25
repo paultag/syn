@@ -52,7 +52,11 @@ def workin_tmp():
 
 
 def cp(source, dest):
-    return shutil.copy2(source, dest)
+    if os.path.isdir(source):
+        new_name = os.path.basename(source)
+        return shutil.copytree(source, "%s/%s" % (dest, new_name))
+    else:
+        return shutil.copy2(source, dest)
 
 
 def link(source, dest):

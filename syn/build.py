@@ -2,6 +2,7 @@
 # AUTHORS file.
 
 from syn.system import cd, run, mkdir, putenv, abspath, workin_tmp, cp
+from syn.archive import Tarball
 from syn.db import Database
 import os.path
 
@@ -23,9 +24,20 @@ def compose_source_archive(unpacked_root, upstream_tarball):
     """
     unpacked_root = os.path.abspath(unpacked_root)
     upstream_tarball = os.path.abspath(upstream_tarball)
+    root_name = os.path.basename(unpacked_root)
+    tarball_name = os.path.basename(upstream_tarball)
+    # XXX: Generate the source targz
+
+    tb = Tarball(upstream_tarball)
+    tb_root = tb._root_folder()
+    if root_name != tb_root:
+        print "The archive's root is wrong. Fix the syn root."
+        # XXX: Fix this print
+        raise Exception("Bad archive")  # XXX: Fix this Exception
 
     with workin_tmp():
-        cp(unpacked_root, ".")
+        cp(unpacked_root, "./")
+        cp(upstream_tarball, "./")
 
 
 def extract_source_archive(signed_database, root):
