@@ -2,9 +2,10 @@
 # AUTHORS file.
 
 from syn.system import cd, run, mkdir, putenv, abspath, workin_tmp, cp
-from syn.archive import Tarball
+from syn.archive import Tarball, create_archive
 from syn.db import Database
 import os.path
+import json
 
 
 def preform_step(step_name):
@@ -39,8 +40,14 @@ def compose_source_archive(unpacked_root, upstream_tarball):
         raise Exception("Bad archive")  # XXX: Fix this Exception
 
     with workin_tmp():
-        cp(unpacked_root, "./")
         cp(upstream_tarball, "./")
+        metainf = json.load(open(("%s/synd/metainf.json" % unpacked_root), 'r'))
+        create_archive(unpacked_root, "%s_%s-%s.syn.changes.tar.gz" % (
+            metainf['syn']['name'],
+            metainf['upstream']['version'],
+            metainf['syn']['version']
+        ))
+        raise Exception
 
 
 def extract_source_archive(signed_database, root):

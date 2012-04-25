@@ -43,3 +43,8 @@ class Tarball:
         self._checksum_hook()
         raise NotImplementedException("Sorry! :)")
         pass
+
+
+def create_archive(source, archive_name):
+    with tarfile.open(archive_name, 'w|gz') as tf:
+        tf.add(source, recursive=True)
