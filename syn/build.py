@@ -1,7 +1,7 @@
 # Copyright (c) Syn AUTHORS, 2012, under the terms and conditions of the
 # AUTHORS file.
 
-from syn.system import cd, run, mkdir, putenv, abspath, workin_tmp
+from syn.system import cd, run, mkdir, putenv, abspath, workin_tmp, cp
 from syn.db import Database
 import os.path
 
@@ -25,7 +25,7 @@ def compose_source_archive(unpacked_root, upstream_tarball):
     upstream_tarball = os.path.abspath(upstream_tarball)
 
     with workin_tmp():
-        pass
+        cp(unpacked_root, ".")
 
 
 def extract_source_archive(signed_database, root):

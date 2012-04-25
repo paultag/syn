@@ -51,20 +51,24 @@ def workin_tmp():
     rmdir(tmpdir)
 
 
+def cp(source, dest):
+    return shutil.copy2(source, dest)
+
+
 def link(source, dest):
-    os.symlink(source, dest)
+    return os.symlink(source, dest)
 
 
 def rm(file_name):
-    os.remove(file_name)
+    return os.remove(file_name)
 
 
 def mv(source, dest):
-    os.rename(source, dest)
+    return os.rename(source, dest)
 
 
 def rmdir(path):
-    shutil.rmtree(path)
+    return shutil.rmtree(path)
 
 
 def abspath(folder):
