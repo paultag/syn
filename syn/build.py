@@ -31,6 +31,9 @@ def compose_source_archive(unpacked_root, upstream_tarball):
     tb = Tarball(upstream_tarball)
     tb_root = tb._root_folder()
     if root_name != tb_root:
+        # During the actual build process, we extract the root tarball, then
+        # overlay the syn local changes against that. Because of that, we need
+        # to make sure the syn root matches the upstream root exactly.
         print "The archive's root is wrong. Fix the syn root."
         # XXX: Fix this print
         raise Exception("Bad archive")  # XXX: Fix this Exception
