@@ -1,8 +1,9 @@
 # Copyright (c) Syn AUTHORS, 2012, under the terms and conditions of the
 # AUTHORS file.
 
-from syn.system import cd, run, mkdir, putenv, abspath
+from syn.system import cd, run, mkdir, putenv, abspath, workin_tmp
 from syn.db import Database
+import os.path
 
 
 def preform_step(step_name):
@@ -20,7 +21,11 @@ def compose_source_archive(unpacked_root, upstream_tarball):
      - Create new DB, hash tarballs
      - Move back to where we want
     """
-    pass
+    unpacked_root = os.path.abspath(unpacked_root)
+    upstream_tarball = os.path.abspath(upstream_tarball)
+
+    with workin_tmp():
+        pass
 
 
 def extract_source_archive(signed_database, root):

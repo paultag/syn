@@ -22,6 +22,18 @@ def run(command):
     return subprocess.check_call(command)
 
 
+tmp_inc = 0
+def mktmp():
+    global tmp_inc
+    unique_string = "/tmp/syn/%s.%s" % (
+        os.getpid(),
+        tmp_inc
+    )
+    tmp_inc += 1
+    mkdir(unique_string, True)
+    return unique_string
+
+
 def mkdir(folder, destroy_old=False):
     try:
         os.mkdir(folder)
@@ -29,6 +41,14 @@ def mkdir(folder, destroy_old=False):
         if e.errno == 17:
             rmdir(folder)
             return mkdir(folder, destroy_old=False)
+
+
+@contextmanager
+def workin_tmp():
+    tmpdir = mktmp()
+    with cd(tmpdir):
+        yield
+    rmdir(tmpdir)
 
 
 def link(source, dest):
