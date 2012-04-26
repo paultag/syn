@@ -29,6 +29,15 @@ def compose_source_archive(unpacked_root, upstream_tarball):
     tarball_name = os.path.basename(upstream_tarball)
     # XXX: Generate the source targz
 
+    metainf = json.load(open(("%s/synd/metainf.json" % unpacked_root), 'r'))
+
+    gen_dest = os.path.abspath("../")
+    syn_id = "%s_%s-%s" % (
+        metainf['syn']['name'],
+        metainf['upstream']['version'],
+        metainf['syn']['version']
+    )
+
     tb = Tarball(upstream_tarball)
     tb_root = tb._root_folder()
     if root_name != tb_root:
@@ -40,14 +49,22 @@ def compose_source_archive(unpacked_root, upstream_tarball):
         raise Exception("Bad archive")  # XXX: Fix this Exception
 
     with workin_tmp():
-        cp(upstream_tarball, "./")
-        metainf = json.load(open(("%s/synd/metainf.json" % unpacked_root), 'r'))
-        create_archive(unpacked_root, "%s_%s-%s.syn.changes.tar.gz" % (
-            metainf['syn']['name'],
-            metainf['upstream']['version'],
-            metainf['syn']['version']
-        ))
-        raise Exception
+        syn_changes = "%s.syn.changes.tar.gz" % (
+            syn_id
+        )
+        create_archive(unpacked_root, syn_changes)
+        syn_changes = os.path.abspath("./%s" % (syn_changes))
+        cp(syn_changes, gen_dest)
+    with open("../%s.syn.upload" % (syn_id), 'w') as fd:
+        syn_changes_name = os.path.basename(syn_changes)
+        changes = {
+            "upload" : [
+                { "name" : syn_changes_name, "sum" : "" },
+                { "name" : tarball_name, "sum" : "" }
+            ]
+        }
+        fd.write(json.dumps(changes))
+
 
 
 def extract_source_archive(signed_database, root):
