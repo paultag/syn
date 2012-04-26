@@ -48,7 +48,7 @@ def compose_source_archive(unpacked_root, upstream_tarball):
         # XXX: Fix this print
         raise Exception("Bad archive")  # XXX: Fix this Exception
 
-    with workin_tmp():
+    with workin_tmp():  # XXX: Do this in place
         syn_changes = "%s.syn.changes.tar.gz" % (
             syn_id
         )
